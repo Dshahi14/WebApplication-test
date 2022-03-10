@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  name: 'Default'
+  vmImage: 'agentvm'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+resources:
+  repositories:
+  - repository: templates
+    type: github
+    name: Dshahi14/Central
+    endpoint: github.com_Dshahi14
+
+stages:
+- stage: 'Build'
+  jobs:
+  - job: 
+  - template: build.yml@templates
