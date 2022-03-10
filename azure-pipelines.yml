@@ -30,7 +30,7 @@ stages:
      WebAppName: 'WebApp-Dev'
 
 - stage: 'SITDeploy'
-  dependsOn: ['Dev']
+  dependsOn: ['DevDeploy']
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
   - template: Deploy.yml@templates
