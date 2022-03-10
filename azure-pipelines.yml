@@ -20,3 +20,19 @@ stages:
 - stage: 'Build'
   jobs:
   - template: build.yml@templates
+
+- stage: 'DevDeploy'
+  dependsOn: ['Build']
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - template: 
+    parameters:
+     WebAppName: 'WebApp-Dev'
+
+- stage: 'SITDeploy'
+  dependsOn: ['Dev']
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - template: 
+    parameters:
+     WebAppName: 'WebApp-SIT'
