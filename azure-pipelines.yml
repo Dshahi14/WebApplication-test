@@ -20,5 +20,4 @@ resources:
 stages:
 - stage: 'Build'
   jobs:
-  - job: 
   - template: build.yml@templates
