@@ -1,5 +1,5 @@
 trigger:
-- none
+- main
 
 pool:
   name: 'Default'
@@ -20,4 +20,5 @@ resources:
 stages:
 - stage: 'Build'
   jobs:
+  - job: 
   - template: build.yml@templates
