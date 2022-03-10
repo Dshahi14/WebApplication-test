@@ -23,7 +23,7 @@ stages:
 
 - stage: 'DevDeploy'
   dependsOn: ['Build']
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
   - template: Deploy.yml@templates
     parameters:
@@ -31,7 +31,7 @@ stages:
 
 - stage: 'SITDeploy'
   dependsOn: ['DevDeploy']
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
   - template: Deploy.yml@templates
     parameters:
